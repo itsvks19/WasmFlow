@@ -102,7 +102,8 @@ suspend fun performAsyncOperation(value: Int) {
 }
 ```
 
-**Note**: This is an experimental project exploring WebAssembly capabilities in Kotlin Multiplatform. APIs may change as the ecosystem evolves.
+> [!NOTE]
+> This is an experimental project exploring WebAssembly capabilities in Kotlin Multiplatform. APIs may change as the ecosystem evolves.
 
 ## Platform Support
 
