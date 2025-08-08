@@ -1,3 +1,6 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinMultiplatform
+import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -6,6 +9,8 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("org.jetbrains.dokka")
+    id("com.vanniktech.maven.publish.base")
 }
 
 kotlin {
@@ -14,10 +19,12 @@ kotlin {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_21)
         }
+
+        publishLibraryVariants("release")
     }
-    
+
     jvm()
-    
+
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         browser {
@@ -34,7 +41,7 @@ kotlin {
             }
         }
     }
-    
+
     sourceSets {
         val commonMain by getting
 
@@ -93,4 +100,10 @@ android {
     dependencies {
 
     }
+}
+
+configure<MavenPublishBaseExtension> {
+    configure(
+        KotlinMultiplatform(javadocJar = JavadocJar.Dokka("dokkaGfm")),
+    )
 }

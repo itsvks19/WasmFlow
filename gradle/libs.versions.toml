@@ -47,6 +47,9 @@ chicory-wabt = { module = "com.dylibso.chicory:wabt", version.ref = "chicory" }
 chicory-wasm-tools = { module = "com.dylibso.chicory:wasm-tools", version.ref = "chicory" }
 chicory-annotations = { module = "com.dylibso.chicory:annotations", version.ref = "chicory" }
 
+vanniktech-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.34.0" }
+dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version = "2.0.0" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
