@@ -27,6 +27,7 @@ kotlin {
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
+        binaries.executable()
         browser {
             val rootDirPath = project.rootDir.path
             val projectDirPath = project.projectDir.path
@@ -39,6 +40,12 @@ kotlin {
                     }
                 }
             }
+        }
+
+        generateTypeScriptDefinitions()
+
+        compilerOptions {
+            freeCompilerArgs.add("-Xwasm-attach-js-exception")
         }
     }
 
@@ -80,6 +87,10 @@ kotlin {
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+
+        wasmJsMain.dependencies {
+            implementation(libs.kotlinx.browser)
         }
     }
 

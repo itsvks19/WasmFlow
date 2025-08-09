@@ -14,7 +14,7 @@ import java.nio.file.Path
 actual class WasmModuleScope actual constructor() {
     actual fun source(source: RawSource): WasmModule {
         val buffer = source.buffered().peek()
-        return WasmModule(Parser.parse(buffer.readByteArray()))
+        return bytes(buffer.readByteArray())
     }
 
     actual fun bytes(bytes: ByteArray): WasmModule {
